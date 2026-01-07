@@ -7,7 +7,7 @@ void SceneManager::Initialize() {
 	const int allChapterCount = 1 + 1;
 	scenes_.resize(allChapterCount);
 
-	for(int i = 0; i < allChapterCount; ++i) {
+	for (int i = 0; i < allChapterCount; ++i) {
 		scenes_[i].push_back(nullptr);
 	}
 
@@ -25,7 +25,7 @@ void SceneManager::LoadScene(int chapter, int section) {
 		currentSection_ = section;
 	}
 
-	if(scenes_[currentChapter_][currentSection_]) {
+	if (scenes_[currentChapter_][currentSection_]) {
 		scenes_[currentChapter_][currentSection_]->Initialize();
 	}
 }
@@ -37,8 +37,8 @@ void SceneManager::Update() {
 	ImGui::PushID(0);
 	ImGui::Text("Chapter: %d", currentChapter_);
 	ImGui::SameLine();
-	if(ImGui::Button("<<")) {
-			currentChapter_--;
+	if (ImGui::Button("<<")) {
+		currentChapter_--;
 	}
 	ImGui::SameLine();
 	if (ImGui::Button(">>")) {
@@ -61,13 +61,18 @@ void SceneManager::Update() {
 	ImGui::PopID();
 	ImGui::End();
 
-	if(currentChapter_ != preChapter_ || currentSection_ != preSection_) {
+	if (currentChapter_ != preChapter_ || currentSection_ != preSection_) {
+
+		if (preChapter_ != currentChapter_) {
+			currentChapter_ = 1;
+		}
+
 		LoadScene(currentChapter_, currentSection_);
 		preChapter_ = currentChapter_;
 		preSection_ = currentSection_;
 	}
 
-	if(scenes_[currentChapter_][currentSection_]) {
+	if (scenes_[currentChapter_][currentSection_]) {
 		scenes_[currentChapter_][currentSection_]->Update();
 	}
 
@@ -75,7 +80,7 @@ void SceneManager::Update() {
 
 void SceneManager::Draw() {
 
-	if(scenes_[currentChapter_][currentSection_]){
+	if (scenes_[currentChapter_][currentSection_]) {
 		scenes_[currentChapter_][currentSection_]->Draw();
 	}
 
