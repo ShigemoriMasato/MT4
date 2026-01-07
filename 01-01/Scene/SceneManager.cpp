@@ -16,7 +16,7 @@ void SceneManager::Initialize() {
 	scenes_[1].push_back(std::make_unique<Scene1_2>());
 
 	currentChapter_ = 1;
-	currentSection_ = 1;
+	currentSection_ = 2;
 }
 
 void SceneManager::LoadScene(int chapter, int section) {
