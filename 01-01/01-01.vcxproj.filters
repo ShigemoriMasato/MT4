@@ -29,11 +29,14 @@
     <ClCompile Include="Scene1-1.cpp">
       <Filter>KamataEngine</Filter>
     </ClCompile>
-    <ClCompile Include="IScene.cpp">
+    <ClCompile Include="Scene\IScene.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
+    <ClCompile Include="Scene\SceneManager.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene1_2.cpp">
+      <Filter>KamataEngine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -119,23 +122,24 @@
       <Filter>KamataEngine\Include</Filter>
     </ClInclude>
     <ClInclude Include="Scene1-1.h" />
-    <ClInclude Include="IScene.h">
+    <ClInclude Include="Scene\IScene.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManager.h">
+    <ClInclude Include="Scene\SceneManager.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Matrix.h">
+    <ClInclude Include="Func\Matrix.h">
       <Filter>Utility</Filter>
     </ClInclude>
     <ClInclude Include="Include.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Structure.h">
+    <ClInclude Include="Func\Structure.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="UniquePrintf.h">
+    <ClInclude Include="Func\UniquePrintf.h">
       <Filter>Utility</Filter>
     </ClInclude>
+    <ClInclude Include="Scene1_2.h" />
   </ItemGroup>
 </Project>

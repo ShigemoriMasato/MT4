@@ -1,6 +1,6 @@
 #pragma once
-#include "UniquePrintf.h"
-#include "Matrix.h"
+#include <Func/UniquePrintf.h>
+#include <Func/Matrix.h>
 
 #include <vector>
 #include <string>

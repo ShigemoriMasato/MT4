@@ -1,5 +1,5 @@
 #include <Novice.h>
-#include "SceneManager.h"
+#include <Scene/SceneManager.h>
 
 const char kWindowTitle[] = "LE2A_06_シゲモリ_マサト_MT4";
 
@@ -11,8 +11,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	std::unique_ptr<SceneManager> sceneManager = std::make_unique<SceneManager>();
 	sceneManager->Initialize();
-
-	sceneManager->LoadScene(1, 1);
 
 	// キー入力結果を受け取る箱
 	char keys[256] = {0};

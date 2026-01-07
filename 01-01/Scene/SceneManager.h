@@ -19,6 +19,7 @@ private:
 	std::vector<std::vector<std::unique_ptr<IScene>>> scenes_;
 
 	int currentChapter_ = 1;
+	int preSection_ = 0;
 	int currentSection_ = 1;
-
+	int preChapter_ = 0;
 };
