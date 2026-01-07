@@ -1,4 +1,4 @@
-#include "Scene1-1.h"
+#include "Scene1_1.h"
 
 void Scene1_1::Initialize() {
 	axis = {1.0f, 1.0f, 1.0f};
@@ -10,5 +10,5 @@ void Scene1_1::Update() {
 }
 
 void Scene1_1::Draw() {
-	printf({300, 0}, rotateMatrix, "RotateMatrix");
+	MyPrintf({300, 0}, rotateMatrix, "RotateMatrix");
 }

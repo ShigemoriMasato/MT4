@@ -112,3 +112,48 @@ struct Matrix4x4 {
 		};
 	}
 };
+
+struct Quaternion {
+	float x;
+	float y;
+	float z;
+	float w;
+
+	static Quaternion Identity() {
+		return { 0.0f, 0.0f, 0.0f, 1.0f };
+	}
+
+	Quaternion Conjugate() const {
+		return { -x, -y, -z, w };
+	}
+
+	Quaternion Normalize() const {
+		float length = Norm();
+		if (length == 0) {
+			return {0, 0, 0, 1};
+		}
+		return { x / length, y / length, z / length, w / length };
+	}
+
+	Quaternion Inverse() const {
+		Quaternion conj = Conjugate();
+		float normSq = x * x + y * y + z * z + w * w;
+		if (normSq == 0) {
+			return {0, 0, 0, 1};
+		}
+		return { conj.x / normSq, conj.y / normSq, conj.z / normSq, conj.w / normSq };
+	}
+
+	float Norm() const {
+		return std::sqrt(x * x + y * y + z * z + w * w);
+	}
+
+	Quaternion operator*(const Quaternion& r) const {
+		Vector3 qv = { x, y, z };
+		Vector3 rv = { r.x, r.y, r.z };
+
+		float ansW = w * r.w - dot(qv, rv);
+		Vector3 xyz = cross(qv, rv) + qv * r.w + rv * w;
+		return { xyz.x, xyz.y, xyz.z, ansW };
+	}
+};

@@ -22,8 +22,8 @@ void Scene1_2::Update() {
 
 void Scene1_2::Draw() {
 	for (size_t i = 0; i < from.size(); ++i) {
-		printf({0.0f, 100.0f + float(i) * 100.0f}, from[i], "From");
-		printf({400.0f, 100.0f + float(i) * 100.0f}, to[i], "To");
-		printf({800.0f, 100.0f + float(i) * 100.0f}, rotateMatrices[i], "RotateMatrix");
+		MyPrintf({0.0f, 100.0f + float(i) * 100.0f}, from[i], "From");
+		MyPrintf({400.0f, 100.0f + float(i) * 100.0f}, to[i], "To");
+		MyPrintf({800.0f, 100.0f + float(i) * 100.0f}, rotateMatrices[i], "RotateMatrix");
 	}
 }

@@ -3,7 +3,11 @@
 #include <string>
 #include <Novice.h>
 
-inline void printf(Vector2 offset, const Matrix4x4& mat, std::string tag = "Matrix4x4") {
+inline void MyPrintf(Vector2 offset, float value, std::string tag = "float") {
+	Novice::ScreenPrintf(int(offset.x), int(offset.y), "%s: \t%8.3f", tag.c_str(), value);
+}
+
+inline void MyPrintf(Vector2 offset, const Matrix4x4& mat, std::string tag = "Matrix4x4") {
 
 	Novice::ScreenPrintf(int(offset.x), int(offset.y), "%s", tag.c_str());
 
@@ -15,7 +19,7 @@ inline void printf(Vector2 offset, const Matrix4x4& mat, std::string tag = "Matr
 	}
 }
 
-inline void printf(Vector2 offset, const Matrix3x3& mat, std::string tag = "Matrix3x3") {
+inline void MyPrintf(Vector2 offset, const Matrix3x3& mat, std::string tag = "Matrix3x3") {
 
 	Novice::ScreenPrintf(int(offset.x), int(offset.y), "%s", tag.c_str());
 
@@ -27,10 +31,14 @@ inline void printf(Vector2 offset, const Matrix3x3& mat, std::string tag = "Matr
 	}
 }
 
-inline void printf(Vector2 offset, const Vector3& vec, std::string tag = "Vector3") {
-	Novice::ScreenPrintf(int(offset.x), int(offset.y), "%s: { %8.3f, %8.3f, %8.3f }", tag.c_str(), vec.x, vec.y, vec.z);
+inline void MyPrintf(Vector2 offset, const Vector3& vec, std::string tag = "Vector3") {
+	Novice::ScreenPrintf(int(offset.x), int(offset.y), "%s: \t{ %8.3f, %8.3f, %8.3f }", tag.c_str(), vec.x, vec.y, vec.z);
 }
 
-inline void printf(Vector2 offset, const Vector2& vec, std::string tag = "Vector2") {
-	Novice::ScreenPrintf(int(offset.x), int(offset.y), "%s: { %8.3f, %8.3f }", tag.c_str(), vec.x, vec.y);
+inline void MyPrintf(Vector2 offset, const Vector2& vec, std::string tag = "Vector2") {
+	Novice::ScreenPrintf(int(offset.x), int(offset.y), "%s: \t{ %8.3f, %8.3f }", tag.c_str(), vec.x, vec.y);
+}
+
+inline void MyPrintf(Vector2 offset, const Quaternion& q, std::string tag = "Quaternion") {
+	Novice::ScreenPrintf(int(offset.x), int(offset.y), "%s: \t{ %8.3f, %8.3f, %8.3f, %8.3f }", tag.c_str(), q.x, q.y, q.z, q.w);
 }

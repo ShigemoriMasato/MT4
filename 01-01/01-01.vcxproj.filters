@@ -26,7 +26,7 @@
     <ClCompile Include="C:\KamataEngine\Adapter\Novice.cpp">
       <Filter>KamataEngine\Adapter</Filter>
     </ClCompile>
-    <ClCompile Include="Scene1-1.cpp">
+    <ClCompile Include="Scene1_1.cpp">
       <Filter>KamataEngine</Filter>
     </ClCompile>
     <ClCompile Include="Scene\IScene.cpp">
@@ -36,6 +36,9 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Scene1_2.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene1_3.cpp">
       <Filter>KamataEngine</Filter>
     </ClCompile>
   </ItemGroup>
@@ -121,7 +124,7 @@
     <ClInclude Include="C:\KamataEngine\DirectXGame\2d\ImGuiManager.h">
       <Filter>KamataEngine\Include</Filter>
     </ClInclude>
-    <ClInclude Include="Scene1-1.h" />
+    <ClInclude Include="Scene1_1.h" />
     <ClInclude Include="Scene\IScene.h">
       <Filter>Core</Filter>
     </ClInclude>
@@ -141,5 +144,6 @@
       <Filter>Utility</Filter>
     </ClInclude>
     <ClInclude Include="Scene1_2.h" />
+    <ClInclude Include="Scene1_3.h" />
   </ItemGroup>
 </Project>

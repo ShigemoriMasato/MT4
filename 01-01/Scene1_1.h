@@ -1,5 +1,5 @@
 #pragma once
-#include "IScene.h"
+#include <Scene/IScene.h>
 
 class Scene1_1 : public IScene {
 public:
