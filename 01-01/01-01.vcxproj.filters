@@ -41,6 +41,9 @@
     <ClCompile Include="Scene1_3.cpp">
       <Filter>KamataEngine</Filter>
     </ClCompile>
+    <ClCompile Include="Scene1_4.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\audio\Audio.h">
@@ -145,5 +148,6 @@
     </ClInclude>
     <ClInclude Include="Scene1_2.h" />
     <ClInclude Include="Scene1_3.h" />
+    <ClInclude Include="Scene1_4.h" />
   </ItemGroup>
 </Project>

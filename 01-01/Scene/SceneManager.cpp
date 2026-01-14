@@ -2,6 +2,7 @@
 #include <Scene1_1.h>
 #include <Scene1_2.h>
 #include <Scene1_3.h>
+#include <Scene1_4.h>
 #include <imgui.h>
 
 void SceneManager::Initialize() {
@@ -16,9 +17,10 @@ void SceneManager::Initialize() {
 	scenes_[1].push_back(std::make_unique<Scene1_1>());
 	scenes_[1].push_back(std::make_unique<Scene1_2>());
 	scenes_[1].push_back(std::make_unique<Scene1_3>());
+	scenes_[1].push_back(std::make_unique<Scene1_4>());
 
 	currentChapter_ = 1;
-	currentSection_ = 3;
+	currentSection_ = 4;
 }
 
 void SceneManager::LoadScene(int chapter, int section) {

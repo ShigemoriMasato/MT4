@@ -45,3 +45,96 @@ inline Matrix4x4 DirectionToDirection(Vector3 from, Vector3 to) {
 
 	return RotateMatrix(axis, cos, sin);
 }
+
+inline Quaternion MakeRotateAxisAngleQuaternion(Vector3 axis, float rotate) {
+	float half = rotate * 0.5f;
+	float s = sin(half);
+	return {
+		axis.x * s,
+		axis.y * s,
+		axis.z * s,
+		cos(half)
+	};
+}
+
+
+inline Matrix4x4 MakeTranslationMatrix(const Vector3& pos) {
+	return {
+		1.0f, 0.0f, 0.0f, 0.0f,
+		0.0f, 1.0f, 0.0f, 0.0f,
+		0.0f, 0.0f, 1.0f, 0.0f,
+		pos.x, pos.y, pos.z, 1.0f
+	};
+}
+
+inline Matrix4x4 MakeRotationXMatrix(float angle) {
+	return {
+		1.0f ,0.0f, 0.0f, 0.0f,
+		0.0f, std::cosf(angle), std::sinf(angle), 0.0f,
+		0.0f, -std::sinf(angle), std::cosf(angle), 0.0f,
+		0.0f, 0.0f, 0.0f, 1.0f
+	};
+}
+
+inline Matrix4x4 MakeRotationYMatrix(float angle) {
+	return {
+		std::cosf(angle), 0.0f, -std::sinf(angle), 0.0f,
+		0.0f, 1.0f, 0.0f, 0.0f,
+		std::sinf(angle), 0.0f, std::cosf(angle), 0.0f,
+		0.0f, 0.0f, 0.0f, 1.0f
+	};
+}
+
+inline Matrix4x4 MakeRotationZMatrix(float angle) {
+	return {
+		std::cosf(angle), std::sinf(angle), 0.0f, 0.0f,
+		-sinf(angle), std::cosf(angle), 0.0f, 0.0f,
+		0.0f, 0.0f, 1.0f, 0.0f,
+		0.0f, 0.0f, 0.0f, 1.0f
+	};
+}
+
+inline Matrix4x4 MakeRotationMatrix(const Quaternion& q) {
+	float xx = q.x * q.x;
+	float yy = q.y * q.y;
+	float zz = q.z * q.z;
+	
+	return {
+		1.0f - 2.0f * (yy + zz), 2.0f * (q.x * q.y + q.z * q.w), 2.0f * (q.x * q.z - q.y * q.w), 0.0f,
+		2.0f * (q.x * q.y - q.z * q.w), 1.0f - 2.0f * (xx + zz), 2.0f * (q.y * q.z + q.x * q.w), 0.0f,
+		2.0f * (q.x * q.z + q.y * q.w), 2.0f * (q.y * q.z - q.x * q.w), 1.0f - 2.0f * (xx + yy), 0.0f,
+		0.0f, 0.0f, 0.0f, 1.0f
+	};
+}
+
+inline Matrix4x4 MakeRotationMatrix(Vector3 angle) {
+	return
+		MakeRotationXMatrix(angle.x) *
+		MakeRotationYMatrix(angle.y) *
+		MakeRotationZMatrix(angle.z);
+}
+
+inline Matrix4x4 MakeScaleMatrix(const Vector3& scale) {
+	return {
+		scale.x, 0.0f, 0.0f, 0.0f,
+		0.0f, scale.y, 0.0f, 0.0f,
+		0.0f, 0.0f, scale.z, 0.0f,
+		0.0f, 0.0f, 0.0f, 1.0f
+	};
+}
+
+inline Vector3 operator*(const Vector3& vec, const Matrix4x4& mat) {
+	return {
+		mat.m[0][0] * vec.x + mat.m[1][0] * vec.y + mat.m[2][0] * vec.z + mat.m[3][0],
+		mat.m[0][1] * vec.x + mat.m[1][1] * vec.y + mat.m[2][1] * vec.z + mat.m[3][1],
+		mat.m[0][2] * vec.x + mat.m[1][2] * vec.y + mat.m[2][2] * vec.z + mat.m[3][2]
+	};
+}
+
+inline Vector3 operator*(const Vector3& vec, const Quaternion& q) {
+	Quaternion p = { vec.x, vec.y, vec.z, 0.0f };
+	Quaternion qConj = q.Conjugate();
+	Quaternion result = q * p * qConj;
+	return { result.x, result.y, result.z };
+}
+
