@@ -138,3 +138,18 @@ inline Vector3 operator*(const Vector3& vec, const Quaternion& q) {
 	return { result.x, result.y, result.z };
 }
 
+inline Quaternion Slerp(const Quaternion& q1, const Quaternion& q2, float t) {
+	float cosTheta = dot(q1, q2);
+	float theta = std::acos(cosTheta);
+
+	float ratio0 = std::sin((1.0f - t) * theta) / std::sin(theta);
+	float ratio1 = std::sin(t * theta) / std::sin(theta);
+
+	return Quaternion(
+		q1.x * ratio0 + q2.x * ratio1,
+		q1.y * ratio0 + q2.y * ratio1,
+		q1.z * ratio0 + q2.z * ratio1,
+		q1.w * ratio0 + q2.w * ratio1
+	).Normalize();
+}
+
